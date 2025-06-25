@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -8,7 +8,7 @@ type FileUploadProps = {
   value?: File | null // <-- optional, and required for react-hook-form integration
 }
 
-export const FileUpload = ({ onChange }: FileUploadProps) => {
+export const FileUpload = ({ onChange, value }: FileUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [preview, setPreview] = useState<string | null>(null)
 
@@ -19,6 +19,18 @@ export const FileUpload = ({ onChange }: FileUploadProps) => {
       onChange(file)
     }
   }
+
+  useEffect(() => {
+    if (!value) {
+      setPreview(null)
+      return
+    }
+
+    const objectUrl = URL.createObjectURL(value)
+    setPreview(objectUrl)
+
+    return () => URL.revokeObjectURL(objectUrl) // cleanup
+  }, [value])
 
   return (
     <div className="space-y-2">

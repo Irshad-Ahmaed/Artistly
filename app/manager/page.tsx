@@ -9,26 +9,24 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { filterArtists } from "@/lib/utils";
-import { useFilterContext } from "@/context/FilterContext";
 import Loading from "../loading";
-import type { Artist } from "@/types"
+import type { Artist } from "@/types";
 import { artistsData } from "@/mock/artists";
 
-const ManagerDashboard =()=> {
+const ManagerDashboard = () => {
   const [artists, setArtists] = useState<Artist[]>([]);
-  const { filters } = useFilterContext();
 
   useEffect(() => {
-    setTimeout(() => setArtists(filterArtists(artistsData, filters)), 500); // Simulate API
-  }, [filters]);
+    // No filter applied here — show full list
+    setTimeout(() => setArtists(artistsData), 500); // Simulate API
+  }, []);
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       <h2 className="text-2xl font-bold mb-6">Manager Dashboard</h2>
 
       {artists.length === 0 ? (
-        <Loading/>
+        <Loading />
       ) : (
         <div className="rounded-md border">
           <Table>
@@ -61,6 +59,6 @@ const ManagerDashboard =()=> {
       )}
     </div>
   );
-}
+};
 
 export default ManagerDashboard;
