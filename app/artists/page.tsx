@@ -6,10 +6,11 @@ import { FilterBar } from "@/components/filters/FilterBar";
 import { useFilterContext } from "@/context/FilterContext";
 import { filterArtists } from "@/lib/utils";
 import Loading from "../loading";
+import type { Artist } from "@/types"
 
 const ArtistsPage = () => {
   const { filters } = useFilterContext();
-  const [artists, setArtists] = useState<any[]>([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
 
   useEffect(() => {
     // simulate API fetch

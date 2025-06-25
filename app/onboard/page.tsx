@@ -33,7 +33,7 @@ const OnboardPage = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
@@ -47,7 +47,7 @@ const OnboardPage = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FormValues) => {
     setLoading(true);
     try {
       setTimeout(()=> {

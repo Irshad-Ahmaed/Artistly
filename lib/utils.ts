@@ -1,7 +1,20 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-export const filterArtists = (artists: any[], filters: any) => {
+type Artist = {
+  name: string
+  category: string
+  location: string
+  price: number
+}
+
+type Filters = {
+  category: string[]
+  location: string
+  priceRange: string
+}
+
+export const filterArtists = (artists: Artist[], filters: Filters) => {
   return artists.filter((artist) => {
     const matchCategory =
       filters.category.length === 0 ||
@@ -22,6 +35,6 @@ export const filterArtists = (artists: any[], filters: any) => {
   });
 }
 
-export function cn(...inputs: any[]) {
-  return twMerge(clsx(inputs));
+export function cn(...inputs: (string | false | null | undefined)[]) {
+  return twMerge(clsx(...inputs))
 }

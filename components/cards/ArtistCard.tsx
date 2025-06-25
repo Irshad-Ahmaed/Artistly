@@ -2,8 +2,9 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import type { Artist } from "@/types"
 
-export const ArtistCard = ({ artist }: { artist: any }) => {
+export const ArtistCard = ({ artist }: { artist: Artist }) => {
   return (
     <Card className="w-full shadow-md">
       <CardHeader>

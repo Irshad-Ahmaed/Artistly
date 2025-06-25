@@ -13,9 +13,10 @@ import artistsData from "@/mock/artists.json";
 import { filterArtists } from "@/lib/utils";
 import { useFilterContext } from "@/context/FilterContext";
 import Loading from "../loading";
+import type { Artist } from "@/types"
 
 const ManagerDashboard =()=> {
-  const [artists, setArtists] = useState<any[]>([]);
+  const [artists, setArtists] = useState<Artist[]>([]);
   const { filters } = useFilterContext();
 
   useEffect(() => {

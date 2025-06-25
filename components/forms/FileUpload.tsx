@@ -1,8 +1,14 @@
 "use client"
 import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
-export const FileUpload = ({ onChange, value }: { onChange: (val: File | null) => void, value: File | null }) => {
+type FileUploadProps = {
+  onChange: (val: File | null) => void
+  value?: File | null // <-- optional, and required for react-hook-form integration
+}
+
+export const FileUpload = ({ onChange }: FileUploadProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [preview, setPreview] = useState<string | null>(null)
 
@@ -30,7 +36,16 @@ export const FileUpload = ({ onChange, value }: { onChange: (val: File | null) =
       </Button>
 
       {/* It's shows preview of image which we uploaded */}
-      {preview && <img src={preview} alt="Preview" className="mt-2 h-24 rounded-md object-cover" />}
+      {preview && (
+        <div className="relative h-24 w-24">
+          <Image
+            src={preview}
+            alt="Preview"
+            fill
+            className="rounded-md object-cover"
+          />
+        </div>
+      )}
     </div>
   )
 }
