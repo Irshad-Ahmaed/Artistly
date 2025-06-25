@@ -45,7 +45,7 @@ const ManagerDashboard =()=> {
               {artists.map((artist, index) => (
                 <TableRow key={index}>
                   <TableCell>{artist.name}</TableCell>
-                  <TableCell>{artist.category}</TableCell>
+                  <TableCell>{artist.category.join(", ")}</TableCell>
                   <TableCell>{artist.location}</TableCell>
                   <TableCell>{artist.fee}</TableCell>
                   <TableCell className="text-right">
