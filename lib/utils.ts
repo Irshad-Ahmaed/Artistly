@@ -1,12 +1,6 @@
+import { Artist } from "@/types";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-
-type Artist = {
-  name: string
-  category: string
-  location: string
-  price: number
-}
 
 type Filters = {
   category: string[]
@@ -18,7 +12,7 @@ export const filterArtists = (artists: Artist[], filters: Filters) => {
   return artists.filter((artist) => {
     const matchCategory =
       filters.category.length === 0 ||
-      filters.category.includes(artist.category);
+      artist.category.some((cat) => filters.category.includes(cat));
 
     const matchLocation =
       !filters.location || artist.location === filters.location;

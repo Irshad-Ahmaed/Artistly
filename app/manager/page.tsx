@@ -9,11 +9,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import artistsData from "@/mock/artists.json";
 import { filterArtists } from "@/lib/utils";
 import { useFilterContext } from "@/context/FilterContext";
 import Loading from "../loading";
 import type { Artist } from "@/types"
+import { artistsData } from "@/mock/artists";
 
 const ManagerDashboard =()=> {
   const [artists, setArtists] = useState<Artist[]>([]);

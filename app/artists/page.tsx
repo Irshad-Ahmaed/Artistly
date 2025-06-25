@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import artistsData from "@/mock/artists.json";
 import { ArtistCard } from "@/components/cards/ArtistCard";
 import { FilterBar } from "@/components/filters/FilterBar";
 import { useFilterContext } from "@/context/FilterContext";
 import { filterArtists } from "@/lib/utils";
 import Loading from "../loading";
 import type { Artist } from "@/types"
+import { artistsData } from "@/mock/artists";
 
 const ArtistsPage = () => {
   const { filters } = useFilterContext();

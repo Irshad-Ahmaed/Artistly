@@ -1,8 +1,10 @@
-[
+import { Artist } from "@/types";
+
+export const artistsData: Artist[] =[
   {
     "id": 1,
     "name": "Arjun Mehta",
-    "category": "Singer",
+    "category": ["Singer"],
     "price": 12000,
     "fee": 12000,
     "location": "Delhi",
@@ -11,7 +13,7 @@
   {
     "id": 2,
     "name": "Malaika Arora",
-    "category": "Dancer",
+    "category": ["Dancer"],
     "price": 18000,
     "fee": 18000,
     "location": "Mumbai",
@@ -20,7 +22,7 @@
   {
     "id": 3,
     "name": "DJ Nova",
-    "category": "DJ",
+    "category": ["DJ"],
     "price": 25000,
     "fee": 25000,
     "location": "Bangalore",
