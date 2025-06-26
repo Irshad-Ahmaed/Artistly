@@ -11,7 +11,7 @@ export const Header = () => {
 
   return (
     <header className="flex justify-between items-center px-6 py-4 border-b bg-white sticky top-0 z-50">
-      <Link href="/" className="text-2xl font-bold">
+      <Link href="/" className="text-2xl font-bold dark:text-black">
         Artistly
       </Link>
 
@@ -29,12 +29,15 @@ export const Header = () => {
         <ModeToggle/>
       </nav>
 
-      <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
-        {menuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-      </button>
+      <div className="md:hidden flex items-center gap-2">
+        <ModeToggle/>
+        <button onClick={() => setMenuOpen(!menuOpen)} className="dark:text-black">
+          {menuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+        </button>
+      </div>
 
       {menuOpen && (
-        <div className="absolute top-16 right-6 bg-white shadow-lg rounded-md border p-4 w-48 flex flex-col space-y-2 md:hidden">
+        <div className="absolute dark:bg-black dark:text-white top-16 right-6 bg-white shadow-lg rounded-md border p-4 w-48 flex flex-col space-y-2 md:hidden">
           <Link href="/artists" onClick={() => setMenuOpen(false)}>
             <Button variant="ghost" className="w-full justify-start">Browse Artists</Button>
           </Link>
