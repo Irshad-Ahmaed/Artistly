@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MenuIcon, XIcon } from "lucide-react"
 import { useState } from "react"
+import { ModeToggle } from "./Light-Dark-Mode"
 
 export const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -16,14 +17,16 @@ export const Header = () => {
 
       <nav className="hidden md:flex gap-4">
         <Link href="/artists">
-          <Button variant="ghost">Browse Artists</Button>
+          <Button variant="ghost" className="dark:bg-black dark:text-white">Browse Artists</Button>
         </Link>
         <Link href="/onboard">
           <Button>Onboard Artist</Button>
         </Link>
         <Link href="/manager">
-          <Button variant={'outline'}>Manage Artist</Button>
+          <Button variant={'outline'} className="dark:bg-black dark:text-white">Manage Artist</Button>
         </Link>
+        
+        <ModeToggle/>
       </nav>
 
       <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
